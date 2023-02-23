@@ -14,8 +14,12 @@ class PasajesController {
         $this->view->menu();
         $pasajeros = $this->model->getPasajeros();
         $vuelos = $this->model->getVuelos();
-        print_r($vuelos);
         $this->view->mostrarInsert($pasajeros, $vuelos);
+    }
+
+    public function insertarDatos() {
+        $pasajerocod = filtrarInput("pasajercod", "POST");
+        echo $pasajerocod;
     }
 }
 ?>
