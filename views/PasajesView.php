@@ -24,11 +24,12 @@ class PasajesView {
       </nav>';
     }
 
-    public function mostrarInsert($pasajeros, $vuelos) {
+    public function mostrarInsert($pasajeros, $vuelos, $clases) {
 
-        echo '<form class="mx-auto col-4 mt-5" action="index.php?action=insertarDatos" method="post">
-        <div class="form-row">
+        echo '<form class="mx-auto col-4 mt-5" action="index.php?action=insertarDatos&controller=Pasajes" method="post">
+        <div class="form-row mx-auto">
           <div class="form-group col-md-6">
+          <input type="hidden" name="idpasaje" value="">
             <label for="inputEmail4">Codigo Pasajero</label>
             <select type="" class="form-control" placeholder="" name="pasajerocod">';
 
@@ -56,8 +57,15 @@ class PasajesView {
         </div>
 
         <div class="form-group col-md-6">
-          <label for="inputAddress2">Clase</label>
-          <input type="text" class="form-control" name="clase">
+        <label for="inputPassword4">Clase</label>
+        <select type="" class="form-control" placeholder="" name="clase">';
+
+        foreach ($clases as $cla) {
+          echo "<option value=".$cla['clase'].">".$cla['clase']."</option>";
+      }
+
+  echo '</select>
+
         </div>
 
         <div class="form-row">
@@ -66,8 +74,62 @@ class PasajesView {
             <input type="text" class="form-control" name="pvp">
           </div>
          
-        <button type="submit" class="btn btn-primary mt-5">Insertar</button>
+        <button type="" class="btn btn-primary mt-5">Insertar</button>
       </form>';
     }
+
+    public function mostrarInsertE($pasajeros, $vuelos, $clases, $error) {
+
+      echo '<form class="mx-auto col-4 mt-5" action="index.php?action=insertarDatos&controller=Pasajes" method="post">
+      <div class="form-row mx-auto">
+        <div class="form-group col-md-6">
+        <input type="hidden" name="idpasaje" value="">
+          <label for="inputEmail4">Codigo Pasajero</label>
+          <select type="" class="form-control" placeholder="" name="pasajerocod">';
+
+          foreach ($pasajeros as $pasa) {
+              echo "<option value=".$pasa['pasajerocod'].">".$pasa['pasajerocod']."</option>";
+          }
+
+      echo '</select>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputPassword4">Codigo Vuelo</label>
+          <select type="" class="form-control" placeholder="" name="identificador">';
+
+          foreach ($vuelos as $vue) {
+              echo "<option value=".$vue['identificador'].">".$vue['identificador']."</option>";
+          }
+
+      echo '</select>
+      </div>
+    
+
+      <div class="form-group col-md-6">
+        <label for="inputAddress">Numero Asiento</label>
+        <input type="text" class="form-control" name="numasiento">
+      </div>
+
+      <div class="form-group col-md-6">
+      <label for="inputPassword4">Clase</label>
+      <select type="" class="form-control" placeholder="" name="clase">';
+
+      foreach ($clases as $cla) {
+        echo "<option value=".$cla['clase'].">".$cla['clase']."</option>";
+    }
+
+echo '</select>
+
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputCity">Pvp</label>
+          <input type="text" class="form-control" name="pvp">
+        </div>
+       <p class= "text-danger">'.$error.'</p> 
+      <button type="" class="btn btn-primary mt-5">Insertar</button>
+    </form>';
+  }
 }
 ?>
