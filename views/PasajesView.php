@@ -78,8 +78,7 @@ class PasajesView {
       </form>';
     }
 
-    public function mostrarInsertE($pasajeros, $vuelos, $clases, $error) {
-
+    public function mostrarInsertE($pasajeros, $vuelos, $clases, $respuesta) {
       echo '<form class="mx-auto col-4 mt-5" action="index.php?action=insertarDatos&controller=Pasajes" method="post">
       <div class="form-row mx-auto">
         <div class="form-group col-md-6">
@@ -127,7 +126,7 @@ echo '</select>
           <label for="inputCity">Pvp</label>
           <input type="text" class="form-control" name="pvp">
         </div>
-       <p class= "text-danger">'.$error.'</p> 
+       <p class= "text-danger">'.$respuesta.'</p> 
       <button type="" class="btn btn-primary mt-5">Insertar</button>
     </form>';
   }

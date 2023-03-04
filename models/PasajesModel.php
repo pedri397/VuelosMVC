@@ -30,9 +30,9 @@ class PasajesModel {
         curl_setopt($conexion, CURLOPT_POSTFIELDS, $envio);
         curl_setopt($conexion, CURLOPT_RETURNTRANSFER, false); 
          
-        json_decode(curl_exec($conexion), true);
-        // substr($resp, 0, -1);
-        // echo $resp;
+        $resp = json_decode(curl_exec($conexion), true);
+        substr($resp, 0, -1);
+        return $resp;
     }
 }
 ?>

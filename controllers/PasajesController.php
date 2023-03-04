@@ -31,8 +31,8 @@ class PasajesController {
         $pvp = filtrarInput("pvp", "POST");
 
         $respuesta = $this->model->postPasaje($idpasaje, $pasajerocod, $identificador, $numasiento, $clase, $pvp);
-      
-        if($respuesta = "El pasajero ya se encuetra en ese vuelo" || $respuesta = "El asiento elegido esta ocupado" || $respuesta = "Registro completado:"){
+        substr($respuesta, 0, -1);
+        if($respuesta){
             $pasajeros = $this->model->getPasajeros();
             $vuelos = $this->model->getVuelos();
             $clases = $this->model->getClases();
